@@ -1,13 +1,34 @@
 package org.example;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.time.Clock;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ContactManagerTest {
-    ContactManager contactManager=new ContactManager();
+    private ContactManager contactManager;
+
+    @BeforeAll
+    public  void setUpAll(){
+        System.out.println("Should execute Before all tests");
+    }
+
+    @BeforeEach
+    public void setUp(){
+        contactManager=new ContactManager();
+    }
+
+    @AfterEach
+    public void tearDown(){
+        System.out.println("Should execute after each test");
+    }
+
+    @AfterAll
+    public  void tearDownAll(){
+        System.out.println("Should execute after all the tests");
+    }
+
     @Test
     @DisplayName("Should create contact")
     public void shouldCreateContact(){
