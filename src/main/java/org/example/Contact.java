@@ -49,6 +49,9 @@ public class Contact {
     }
 
     public void validatePhoneNumber(){
+        if(this.phoneNumber==null){
+            throw new RuntimeException("Phone number cannot be null");
+        }
         if (this.phoneNumber.length()!=10){
             throw new RuntimeException("Phone number must be of 10 digit");
         }
